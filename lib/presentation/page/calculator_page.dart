@@ -103,7 +103,15 @@ class _CalculatorPageState extends State<CalculatorPage> {
               } else if (buttonText == "C") {
                 _updateTextField("", concatenated: false);
               } else {
-                _updateTextField(buttonText);
+                if (buttonText == "sin" || buttonText == "cos" || buttonText == "tan" || buttonText == "log" || buttonText == "ln") {
+                  _updateTextField("$buttonText(");
+                } else if (buttonText == "|x|") {
+                  _updateTextField("abs(");
+                } else if (buttonText == String.fromCharCode(0x03C6)) {
+                  _updateTextField("pi");
+                } else {
+                  _updateTextField(buttonText);
+                }
               }
             }
           },
